@@ -1,19 +1,28 @@
-import React from "react";
+import React, {useState} from "react";
 import {Outlet} from "react-router-dom";
+import Header from "./Header";
 
-const userGroup: boolean = false
+type Props = {
+  openMenu: boolean,
+  // setOpenMenu: (val: boolean) => void,
+}
+
 
 export default function Layout() {
+
+  const userGroup: boolean = false
+  const [openMenu, setOpenMenu] = useState<Props>(false)
+
+
+
   return (
       <>
-        <header>
-          I'm Header
-        </header>
+        <Header menu={setOpenMenu}/>
         <main>
           <nav>
             I'm Nav
           </nav>
-          <div>
+          <div className='main-content'>
             {userGroup
                 ? <Outlet/>
                 : <>You do not have permission to view this page</>
@@ -21,9 +30,8 @@ export default function Layout() {
           </div>
         </main>
         <footer>
-          I'm Footer
+          {/*I'm Footer*/}
         </footer>
-        I'm Layout
       </>
   )
 }
