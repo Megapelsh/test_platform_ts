@@ -2,22 +2,29 @@ import React, {useState} from "react";
 import {Outlet} from "react-router-dom";
 import Header from "./Header";
 
-type Props = {
+// type Props = {
+//   openMenu: boolean,
+//   menu: boolean,
+//   // setOpenMenu: (val: boolean) => void,
+// }
+
+interface IHeaderProps {
   openMenu: boolean,
-  // setOpenMenu: (val: boolean) => void,
+  setOpenMenu: React.Dispatch<React.SetStateAction<boolean>>
 }
 
+// React.Dispatch<React.SetStateAction<string>>
 
-export default function Layout() {
+const Layout: React.FC = () => {
 
   const userGroup: boolean = false
-  const [openMenu, setOpenMenu] = useState<Props>(false)
+  const [openMenu, setOpenMenu] = useState(false)
 
 
 
   return (
       <>
-        <Header menu={setOpenMenu}/>
+        <Header setOpenMenu ={setOpenMenu(!ompenMenu)}/>
         <main>
           <nav>
             I'm Nav
@@ -35,3 +42,5 @@ export default function Layout() {
       </>
   )
 }
+
+export {Layout}
